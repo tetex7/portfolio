@@ -77,7 +77,7 @@ function makeNavButton(navList, title, href, desc)
 
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
-    fetch('include/nav.html')
+    fetch('/portfolio/include/nav.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('nav-placeholder').innerHTML = html;
