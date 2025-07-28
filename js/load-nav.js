@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add static links
             const staticLinks = [
-                { title: "Home", href: "/index.html" },
-                { title: "About", href: "/about.html" }
+                { title: "Home", href: "index.html" },
+                { title: "About", href: "about.html" }
             ];
 
             staticLinks.forEach(link => {
