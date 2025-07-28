@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             // Add dynamic project links
-            fetch('projects/projects.json')
+            fetch('projects.json')
                 .then(res => res.json())
                 .then(projects => {
                     projects.forEach(proj => {
