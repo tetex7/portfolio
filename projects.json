@@ -7,6 +7,6 @@
     {
         "title": "libsafetynet",
         "slug": "libsafetynet",
-        "description": "C99 runtime safety lib using mutex-based error propagation."
+        "description": "a C99 runtime memory safety net, Using Win32 style error handling."
     }
 ]

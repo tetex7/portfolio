@@ -15,42 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/*document.addEventListener("DOMContentLoaded", () => {
-    const navList = document.getElementById("nav-list");
-
-    // Static links
-    const staticLinks = [
-        { title: "Home", href: "/" },
-        { title: "About", href: "/about.html" }
-    ];
-
-    staticLinks.forEach(link => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = link.href;
-        a.textContent = link.title;
-        li.appendChild(a);
-        navList.appendChild(li);
-    });
-
-    // Project links from JSON
-    fetch("/projects/projects.json")
-        .then(res => res.json())
-        .then(projects => {
-            projects.forEach(proj => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = `/projects/${proj.slug}/index.html`;
-                a.textContent = proj.title;
-                li.appendChild(a);
-                navList.appendChild(li);
-            });
-        })
-        .catch(err => {
-            console.error("Nav load failed:", err);
-        });
-});*/
-
 /**
  * Creates and appends a navigation button to a list.
  * @param {HTMLElement} navList - The navigation list element to append to.
@@ -74,6 +38,12 @@ function makeNavButton(navList, title, href, desc)
     li.appendChild(a);
     navList.appendChild(li);
 }
+
+/**
+ * @typedef {{title:string, slug:string, description:string}} project_t
+ */
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
@@ -99,11 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch('projects.json')
                 .then(res => res.json())
                 .then(projects => {
-                    projects.forEach(proj => {
+                    projects.forEach( /** @param {project_t} proj */ proj => {
                         makeNavButton(navList, proj.title, `${proj.slug}.html`, proj.description);
                     });
                 })
                 .catch(err => {
+                    makeNavButton(navList, "Failed to load projects.json", "#", "Failed to load projects.json");
                     console.error("Failed to load projects.json", err);
                 });
 
