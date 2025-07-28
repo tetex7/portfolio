@@ -51,6 +51,30 @@
         });
 });*/
 
+/**
+ * Creates and appends a navigation button to a list.
+ * @param {HTMLElement} navList - The navigation list element to append to.
+ * @param {string} title - The text for the button.
+ * @param {string} href - The URL the button links to.
+ * @param {string} desc - Optional description.
+ * @return {void}
+ */
+function makeNavButton(navList, title, href, desc)
+{
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = href;
+    a.textContent = title;
+
+    if (desc)
+    {
+        a.title = desc; // this creates a native tooltip on hover
+    }
+
+    li.appendChild(a);
+    navList.appendChild(li);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
     fetch('include/nav.html')
@@ -63,17 +87,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add static links
             const staticLinks = [
-                { title: "Home", href: "index.html" },
-                { title: "About", href: "about.html" }
+                { title: "Home", href: "index.html", desc: "The main home page" },
+                { title: "About", href: "about.html", desc: "The About Me page" }
             ];
 
             staticLinks.forEach(link => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = link.href;
-                a.textContent = link.title;
-                li.appendChild(a);
-                navList.appendChild(li);
+                makeNavButton(navList, link.title, link.href, link.desc);
             });
 
             // Add dynamic project links
@@ -81,12 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(res => res.json())
                 .then(projects => {
                     projects.forEach(proj => {
-                        const li = document.createElement("li");
-                        const a = document.createElement("a");
-                        a.href = `/portfolio/projects/${proj.slug}/index.html`;
-                        a.textContent = proj.title;
-                        li.appendChild(a);
-                        navList.appendChild(li);
+                        makeNavButton(navList, proj.title, `/portfolio/projects/${proj.slug}/index.html`, proj.description);
                     });
                 })
                 .catch(err => {

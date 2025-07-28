@@ -59,3 +59,36 @@ footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.6);
     letter-spacing: 0.05em;
 }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    max-width: 200px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 6px 8px;
+    border-radius: 4px;
+
+    /* Position it */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* above the element */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Fade in */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
