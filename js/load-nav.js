@@ -77,7 +77,7 @@ function makeNavButton(navList, title, href, desc)
 
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
-    fetch('/portfolio/include/nav.html')
+    fetch('include/nav.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('nav-placeholder').innerHTML = html;
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(res => res.json())
                 .then(projects => {
                     projects.forEach(proj => {
-                        makeNavButton(navList, proj.title, `/portfolio/projects/${proj.slug}/index.html`, proj.description);
+                        makeNavButton(navList, proj.title, `${proj.slug}.html`, proj.description);
                     });
                 })
                 .catch(err => {
