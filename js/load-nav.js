@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Add static links
             const staticLinks = [
-                { title: "Home", href: "./index.html" },
-                { title: "About", href: "./about.html" }
+                { title: "Home", href: "portfolio" },
+                { title: "About", href: "portfolio/about.html" }
             ];
 
             staticLinks.forEach(link => {
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     projects.forEach(proj => {
                         const li = document.createElement("li");
                         const a = document.createElement("a");
-                        a.href = `./projects/${proj.slug}/index.html`;
+                        a.href = `/portfolio/projects/${proj.slug}/index.html`;
                         a.textContent = proj.title;
                         li.appendChild(a);
                         navList.appendChild(li);
