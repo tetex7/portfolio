@@ -1,0 +1,60 @@
+/*
+ * Copyright (C) 2025  Tetex7
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+#page-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#content-wrap {
+    flex: 1;
+    /* padding-bottom: optional if you want space above footer */
+}
+
+#content-wrap {
+    padding: 5px;  /* 20 pixels all around, tweak as you like */
+}
+
+#site-footer {
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+}
+
+footer {
+    /*font-family: 'EB Garamond', serif;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.05em;*/
+    background-color: #111; /* Same dark as nav */
+    color: #eee;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 0.9em;
+    border-top: 1px solid #444;
+    font-family: 'Fira Sans', sans-serif;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.6);
+    letter-spacing: 0.05em;
+}
