@@ -40,10 +40,9 @@ function makeNavButton(navList, title, href, desc)
 }
 
 /**
- * @typedef {{title:string, slug:string, description:string}} project_t
+ * @typedef {{title:string, slug:string, description:string, enable:boolean}} project_t
+ * @typedef {{title:string, href:string, desc:string}} staticLinks_t
  */
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
@@ -55,6 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
             // After nav is loaded, populate projects dynamically
             const navList = document.getElementById("nav-list");
 
+
+            /** @type staticLinks_t[] */
             // Add static links
             const staticLinks = [
                 { title: "Home", href: "index.html", desc: "The main home page" },
@@ -70,7 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(res => res.json())
                 .then(projects => {
                     projects.forEach( /** @param {project_t} proj */ proj => {
-                        makeNavButton(navList, proj.title, `${proj.slug}.html`, proj.description);
+                        if (proj.enable === true)
+                        {
+                            makeNavButton(navList, proj.title, `${proj.slug}.html`, proj.description);
+                        }
                     });
                 })
                 .catch(err => {

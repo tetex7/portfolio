@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-// js/include.js
 document.addEventListener("DOMContentLoaded", () => {
     const includes = document.querySelectorAll('[data-include]');
 
@@ -24,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (file.endsWith("include/nav.html"))
         {
             console.error("Cannot include the NAV bar using this system");
-            el.innerHTML = "<!-- NAV include failed -->";
-            return
+            el.innerHTML = `<!-- include '${file}' failed -->`;
+            return;
         }
 
         fetch(file)
@@ -34,14 +33,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.text();
             })
             .then(data => {
-                el.innerHTML = data;
+                el.innerHTML = `<!-- included from '${file}' -->` + data;
             })
             .catch(err => {
                 console.error("Include error:", err);
-                el.innerHTML = "<!-- include failed -->";
+                el.innerHTML = `<!-- include '${file}' failed -->`;
             });
     });
-
 });
 
 

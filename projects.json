@@ -2,11 +2,13 @@
     {
         "title": "Lambda 61",
         "slug": "lambda-61",
-        "description": "Lua-based build tool inspired by Make and CMake."
+        "description": "Lua-based build tool inspired by Make and CMake.",
+        "enable": false
     },
     {
         "title": "libsafetynet",
         "slug": "libsafetynet",
-        "description": "a C99 runtime memory safety net, Using Win32 style error handling."
+        "description": "a C99 runtime memory safety net, Using Win32 style error handling.",
+        "enable": true
     }
 ]
