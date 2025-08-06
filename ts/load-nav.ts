@@ -23,10 +23,10 @@
  * @param {string} desc - Optional description.
  * @return {void}
  */
-function makeNavButton(navList, title, href, desc)
+function makeNavButton(navList: HTMLElement, title: string, href:string, desc:string)
 {
-    const li = document.createElement("li");
-    const a = document.createElement("a");
+    const li: HTMLLIElement = document.createElement("li");
+    const a: HTMLAnchorElement = document.createElement("a");
     a.href = href;
     a.textContent = title;
 
@@ -39,10 +39,8 @@ function makeNavButton(navList, title, href, desc)
     navList.appendChild(li);
 }
 
-/**
- * @typedef {{title:string, slug:string, description:string, enable:boolean}} project_t
- * @typedef {{title:string, href:string, desc:string}} staticLinks_t
- */
+type project_t = { title: string; slug: string; description: string; enable: boolean; };
+type staticLinks_t = { title: string; href: string; desc: string; };
 
 document.addEventListener("DOMContentLoaded", () => {
     // Load nav.html snippet
@@ -52,17 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('nav-placeholder').innerHTML = html;
 
             // After nav is loaded, populate projects dynamically
-            const navList = document.getElementById("nav-list");
+            const navList: HTMLElement = document.getElementById("nav-list");
 
 
-            /** @type staticLinks_t[] */
             // Add static links
-            const staticLinks = [
+            const staticLinks: staticLinks_t[] = [
                 { title: "Home", href: "index.html", desc: "The main home page" },
                 { title: "About", href: "about.html", desc: "The About Me page" }
             ];
 
-            staticLinks.forEach(link => {
+            staticLinks.forEach((link: staticLinks_t) => {
                 makeNavButton(navList, link.title, link.href, link.desc);
             });
 
@@ -70,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             fetch('projects.json')
                 .then(res => res.json())
                 .then(projects => {
-                    projects.forEach( /** @param {project_t} proj */ proj => {
+                    projects.forEach( (proj: project_t) => {
                         if (proj.enable === true)
                         {
                             makeNavButton(navList, proj.title, `${proj.slug}.html`, proj.description);

@@ -16,10 +16,11 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-    const includes = document.querySelectorAll('[data-include]');
+    const includes: NodeListOf<Element> = document.querySelectorAll('[data-include]');
 
-    includes.forEach(el => {
-        const file = el.getAttribute('data-include');
+    includes.forEach((el: Element) => {
+        const file: string = el.getAttribute('data-include');
+        // @ts-ignore
         if (file.endsWith("include/nav.html"))
         {
             console.error("Cannot include the NAV bar using this system");
@@ -28,14 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         fetch(file)
-            .then(res => {
+            .then((res: Response) => {
                 if (!res.ok) throw new Error(`Failed to fetch ${file}`);
                 return res.text();
             })
-            .then(data => {
+            .then((data: string) => {
                 el.innerHTML = `<!-- included from '${file}' -->` + data;
             })
-            .catch(err => {
+            .catch((err: Error) => {
                 console.error("Include error:", err);
                 el.innerHTML = `<!-- include '${file}' failed -->`;
             });
