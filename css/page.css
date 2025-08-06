@@ -22,7 +22,7 @@ html, body {
 }
 
 #page-container {
-    min-height: 100vh;
+    min-height: 95dvh;
     display: flex;
     flex-direction: column;
 }
