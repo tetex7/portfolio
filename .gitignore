@@ -82,3 +82,4 @@ l61-deployment-package
 Testing/Temporary
 docs/
 js/
+*.temp
